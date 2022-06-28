@@ -9,7 +9,7 @@ module.exports = {
         'bg-card': '#f8f9fa',
       },
       minHeight: {
-        fixed: 'calc(100vh - 240px)',
+        fixed: 'calc(100vh - 160px)',
       },
     },
   },

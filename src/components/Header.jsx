@@ -9,7 +9,7 @@ const Header = () => {
   const { cart } = state;
 
   return (
-    <div className="flex items-center justify-between w-full h-20 px-10 py-4 bg-platzi-blue text-text-white font-sans">
+    <div className="fixed flex items-center justify-between w-full h-20 px-8 py-4 bg-platzi-blue text-text-white font-sans lg:px-10">
       <h1 className="text-2xl font-semibold">
         <Link to="/">PlatziConf Merch</Link>
       </h1>

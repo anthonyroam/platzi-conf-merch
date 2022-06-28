@@ -22,4 +22,4 @@ const usePositionStack = (buyer) => {
   return map;
 };
 
-export default usePositionStack ;
+export default usePositionStack;

@@ -22,10 +22,13 @@ const Payment = () => {
   };
 
   return (
-    <div className="w-3/5 mx-auto flex flex-col gap-4 items-center">
+    <div className="w-full mx-auto flex flex-col gap-4 items-center lg:w-3/5">
       <h3 className="font-bold text-lg">Resumen del pedido:</h3>
       {cart.map((item, index) => (
-        <div className="w-3/5 mx-auto" key={`item:${item.id}${index}`}>
+        <div
+          className="w-full mx-auto lg:w-3/5"
+          key={`item:${item.id}${index}`}
+        >
           <div className="flex items-center justify-between border-b-2 border-gray-400">
             <h3 className="text-lg">{item.title}</h3>
             <span className="font-semibold">$ {item.price}</span>
@@ -33,7 +36,7 @@ const Payment = () => {
         </div>
       ))}
       {!!cart.length && (
-        <h3 className="font-semibold text-lg text-right self-start w-3/5 mx-auto">
+        <h3 className="font-semibold text-lg text-right self-start w-full mx-auto lg:w-3/5">
           Total : $ {sumTotal(cart)}
         </h3>
       )}
@@ -41,6 +44,7 @@ const Payment = () => {
         style={{
           layout: 'vertical',
           color: 'blue',
+          tagline: false,
         }}
         createOrder={(data, actions) => {
           return actions.order.create({

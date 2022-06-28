@@ -31,8 +31,8 @@ const Information = () => {
   };
 
   return (
-    <div className="flex gap-4 w-3/5 mx-auto py-8">
-      <div className="flex flex-col gap-4 w-4/5 ">
+    <div className="flex flex-col gap-4 w-full mx-auto lg:w-3/5 lg:flex-row">
+      <div className="flex flex-col gap-4 w-full lg:w-4/5 ">
         <div>
           <h2 className="font-bold text-xl">Informacion de contacto:</h2>
         </div>
@@ -63,7 +63,7 @@ const Information = () => {
           />
         </div>
       </div>
-      <div className="w-1/5">
+      <div className="w-5/6 mx-auto lg:w-1/5">
         <h3 className="font-bold text-xl">Pedido:</h3>
         {cart.map((item, index) => {
           return (

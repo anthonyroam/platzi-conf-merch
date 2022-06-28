@@ -4,4 +4,4 @@ const sumTotal = (array) => {
   return sum;
 };
 
-export default sumTotal ;
+export default sumTotal;

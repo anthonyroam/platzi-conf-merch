@@ -27,9 +27,9 @@ const useInitialState = () => {
 
   const addNewOrder = (payload) => {
     setState({
-        ...state,
-        orders: [...state.orders, payload],
-      });
+      ...state,
+      orders: [...state.orders, payload],
+    });
   };
 
   const emptyCart = () => {

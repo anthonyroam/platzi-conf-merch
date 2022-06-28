@@ -18,7 +18,7 @@ const Success = () => {
   }, [state.orders]);
 
   return (
-    <div className="w-3/5 mx-auto">
+    <div className="w-full mx-auto lg:w-3/5">
       <div className="space-y-4">
         <h2 className="font-bold text-xl">{name}, Gracias por tu compra!</h2>
         <span>Tu pedido llegara en 3 dias a tu direccion</span>
