@@ -1,25 +1,64 @@
 import React from 'react';
-import { AppContext } from "../context/AppContext";
+import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
+import sumTotal from '../utils/sumTotal';
+import { PayPalButtons } from '@paypal/react-paypal-js';
 
 const Payment = () => {
-  const { state } = React.useContext(AppContext);
-  const { cart } = state;
-  
+  const { state, addNewOrder } = React.useContext(AppContext);
+  const { cart, buyer } = state;
+  const history = useNavigate();
+
+  const handleApprove = (details) => {
+    if (details.status === 'COMPLETED') {
+      const newOrder = {
+        buyer: buyer[buyer.length - 1],
+        product: cart,
+        payment: details,
+      };
+      addNewOrder(newOrder);
+      history('/checkout/success');
+    }
+  };
+
   return (
-    <div className="w-3/5 mx-auto">
-      <div className="space-y-4">
-        <h3 className="font-semibold text-lg">Resumen del pedido:</h3>
-        {cart.map(item => (
-          <div className='w-4/5 mx-auto'>
-            <div className='flex items-center justify-between border-b-2 border-gray-400'>
-              <h3>{item.title}</h3>
-              <span>$ {item.price}</span>
-            </div>
+    <div className="w-3/5 mx-auto flex flex-col gap-4 items-center">
+      <h3 className="font-bold text-lg">Resumen del pedido:</h3>
+      {cart.map((item, index) => (
+        <div className="w-3/5 mx-auto" key={`item:${item.id}${index}`}>
+          <div className="flex items-center justify-between border-b-2 border-gray-400">
+            <h3 className="text-lg">{item.title}</h3>
+            <span className="font-semibold">$ {item.price}</span>
           </div>
-        ))}
-        <div>Pago con PayPal</div>
-      </div>
-      <div />
+        </div>
+      ))}
+      {!!cart.length && (
+        <h3 className="font-semibold text-lg text-right self-start w-3/5 mx-auto">
+          Total : $ {sumTotal(cart)}
+        </h3>
+      )}
+      <PayPalButtons
+        style={{
+          layout: 'vertical',
+          color: 'blue',
+        }}
+        createOrder={(data, actions) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: sumTotal(cart),
+                },
+              },
+            ],
+          });
+        }}
+        onApprove={(data, actions) => {
+          return actions.order.capture().then((details) => {
+            handleApprove(details);
+          });
+        }}
+      />
     </div>
   );
 };

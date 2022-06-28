@@ -1,7 +1,7 @@
 const sumTotal = (array) => {
-    const reducer = (acumulator, currentValue) => acumulator + currentValue.price;
-    const sum = array.reduce(reducer, 0);
-    return sum
-  };
+  const reducer = (acumulator, currentValue) => acumulator + currentValue.price;
+  const sum = array.reduce(reducer, 0);
+  return sum;
+};
 
-export { sumTotal };
+export default sumTotal ;

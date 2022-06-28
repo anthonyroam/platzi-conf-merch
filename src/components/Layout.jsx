@@ -4,9 +4,11 @@ import { Footer } from './Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen max-h-full bg-light-gray">
       <Header />
-      {children}
+      <div className="w-5/6 mx-auto min-h-fixed max-h-full py-10">
+        {children}
+      </div>
       <Footer />
     </div>
   );
