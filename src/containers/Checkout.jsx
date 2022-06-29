@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
 import { AppContext } from '../context/AppContext';
 import sumTotal from '../utils/sumTotal';
+import { PrimaryButton } from '../components/PrimaryButton';
+import { SecondaryButton } from '../components/SecondaryButton';
 
 const Checkout = () => {
   const { state, removeFromCart } = React.useContext(AppContext);
@@ -13,8 +15,8 @@ const Checkout = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full mx-auto px-6 py-10 lg:w-3/5 lg:flex-row">
-      <div className="w-full space-y-4 lg:w-3/5 ">
+    <main className="flex flex-col gap-6 w-full mx-auto px-6 py-10 lg:w-3/5 lg:flex-row">
+      <section className="w-full space-y-4 lg:w-3/5 ">
         {!!cart.length ? (
           <h3 className="font-bold text-2xl">Lista de pedidos:</h3>
         ) : (
@@ -34,19 +36,27 @@ const Checkout = () => {
             </button>
           </div>
         ))}
-      </div>
+      </section>
       {!!cart.length && (
-        <div className="font-semibold space-y-4">
+        <aside className="flex flex-col gap-4 font-semibold">
           <h3 className="text-lg">Precio total: $ {sumTotal(cart)}</h3>
-          <button
-            type="button"
-            className="px-4 py-2 border-2 rounded-md border-white bg-platzi-blue text-text-white"
-          >
-            <Link to="/checkout/information">Continuar pedido</Link>
-          </button>
-        </div>
+          <Link to="/checkout/information">
+            <PrimaryButton 
+              type="button"
+              content="Continuar pedido"
+              handleClick={null}
+            />
+          </Link>
+          <Link to="/">
+            <SecondaryButton 
+              type="button"
+              content="Regresar"
+              handleClick={null}
+            />
+          </Link>
+        </aside>
       )}
-    </div>
+    </main>
   );
 };
 

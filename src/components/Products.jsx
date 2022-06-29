@@ -11,18 +11,16 @@ const Products = () => {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-center gap-8 flex-wrap">
-        {products.map((product, index) => {
-          return (
-            <Product
-              key={`product:${product.id}${index}`}
-              product={product}
-              handleAddToCart={handleAddToCart}
-            />
-          );
-        })}
-      </div>
+    <div className="flex items-center justify-center gap-8 flex-wrap">
+      {products.map((product, index) => {
+        return (
+          <Product
+            key={`product:${product.id}${index}`}
+            product={product}
+            handleAddToCart={handleAddToCart}
+          />
+        );
+      })}
     </div>
   );
 };

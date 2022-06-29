@@ -5,7 +5,7 @@ const Product = ({ product, handleAddToCart }) => {
   const { image, title, price, description } = product;
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center h-96 w-72 rounded-md shadow-md p-6 bg-bg-card">
+    <section className="flex flex-col gap-4 justify-center items-center h-96 w-72 rounded-md shadow-md p-6 bg-bg-card">
       <div className="h-40 w-40 grid place-items-center">
         <img src={image} alt={title} />
       </div>
@@ -18,10 +18,10 @@ const Product = ({ product, handleAddToCart }) => {
       </div>
       <PrimaryButton
         type="button"
-        content="Add to cart"
+        content="Comprar"
         handleClick={() => handleAddToCart(product)}
       />
-    </div>
+    </section>
   );
 };
 

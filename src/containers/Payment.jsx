@@ -3,6 +3,8 @@ import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import sumTotal from '../utils/sumTotal';
 import { PayPalButtons } from '@paypal/react-paypal-js';
+import { SecondaryButton } from "../components/SecondaryButton";
+import { Link } from 'react-router-dom';
 
 const Payment = () => {
   const { state, addNewOrder } = React.useContext(AppContext);
@@ -22,7 +24,7 @@ const Payment = () => {
   };
 
   return (
-    <div className="w-full mx-auto flex flex-col gap-4 items-center lg:w-3/5">
+    <main className="w-full mx-auto flex flex-col gap-4 items-center lg:w-3/5">
       <h3 className="font-bold text-lg">Resumen del pedido:</h3>
       {cart.map((item, index) => (
         <div
@@ -63,7 +65,14 @@ const Payment = () => {
           });
         }}
       />
-    </div>
+      <Link to="/checkout">
+        <SecondaryButton
+          type="button"
+          content="Cancelar"
+          handleClick={null}
+        />
+      </Link>
+    </main>
   );
 };
 

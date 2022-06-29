@@ -31,21 +31,21 @@ const Information = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full mx-auto lg:w-3/5 lg:flex-row">
-      <div className="flex flex-col gap-4 w-full lg:w-4/5 ">
+    <main className="flex flex-col gap-4 w-full mx-auto lg:w-3/5 lg:flex-row">
+      <section className="flex flex-col gap-4 w-full lg:w-4/5 ">
         <div>
           <h2 className="font-bold text-xl">Informacion de contacto:</h2>
         </div>
         <div>
           <form ref={form} className="flex flex-col gap-2">
-            <Input type="text" name="name" id="" placeholder="Full name" />
-            <Input type="text" name="email" id="" placeholder="Email" />
-            <Input type="text" name="address" id="" placeholder="Address" />
-            <Input type="text" name="city" id="" placeholder="City" />
-            <Input type="text" name="state" id="" placeholder="State" />
-            <Input type="text" name="country" id="" placeholder="Country" />
-            <Input type="text" name="zipCode" id="" placeholder="Zip code" />
-            <Input type="text" name="phone" id="" placeholder="Phone" />
+            <Input type="text" name="name" id="" placeholder="Nombre" />
+            <Input type="text" name="email" id="" placeholder="Correo" />
+            <Input type="text" name="address" id="" placeholder="Dirección" />
+            <Input type="text" name="city" id="" placeholder="Ciudad" />
+            <Input type="text" name="state" id="" placeholder="Estado" />
+            <Input type="text" name="country" id="" placeholder="País" />
+            <Input type="text" name="zipCode" id="" placeholder="Código Postal" />
+            <Input type="text" name="phone" id="" placeholder="Teléfono" />
           </form>
         </div>
         <div className="flex items-center justify-around">
@@ -62,8 +62,8 @@ const Information = () => {
             handleClick={handleSubmit}
           />
         </div>
-      </div>
-      <div className="w-5/6 mx-auto lg:w-1/5">
+      </section>
+      <aside className="w-5/6 mx-auto lg:w-1/5">
         <h3 className="font-bold text-xl">Pedido:</h3>
         {cart.map((item, index) => {
           return (
@@ -75,8 +75,8 @@ const Information = () => {
             </div>
           );
         })}
-      </div>
-    </div>
+      </aside>
+    </main>
   );
 };
 

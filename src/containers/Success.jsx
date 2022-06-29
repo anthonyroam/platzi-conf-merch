@@ -2,33 +2,47 @@ import React from 'react';
 import { Map } from '../components/Map';
 import { AppContext } from '../context/AppContext';
 import usePositionStack from '../hooks/usePositionStack';
+import { Link } from 'react-router-dom';
 
 const Success = () => {
   const { state, emptyCart } = React.useContext(AppContext);
-
   const [name, setName] = React.useState('');
-  const map = usePositionStack(state.buyer[state.buyer.length - 1]);
+  
+  const lastBuyer = state.buyer.length - 1
+  const map = usePositionStack(state.buyer[lastBuyer]);
 
   React.useEffect(() => {
     if (!!state.orders.length) {
       emptyCart();
-      const name = state.orders[state.orders.length - 1].buyer.name;
+      
+      const LastOrder = state.orders.length - 1
+      const name = state.orders[LastOrder].buyer.name;
+      
       setName(name);
     }
   }, [state.orders]);
 
   return (
-    <div className="w-full mx-auto lg:w-3/5">
-      <div className="space-y-4">
-        <h2 className="font-bold text-xl">{name}, Gracias por tu compra!</h2>
-        <span>Tu pedido llegara en 3 dias a tu direccion</span>
-        {!!map ? (
-          <Map data={map} />
-        ) : (
-          <div className="font-semibold ">wait a few second...</div>
-        )}
+    <main className="w-full mx-auto lg:w-3/5">
+      {!!state.orders.length 
+      ? <div className="flex flex-col gap-4">
+          <div>
+            <h2 className="font-bold text-xl">{name}, Gracias por tu compra!</h2>
+            <span onClick={() => console.log(state)}>Tu pedido llegara en 3 dias a tu direccion</span>
+          </div>
+          {!!map ? (
+            <Map data={map} />
+          ) : (
+            <div className="font-semibold ">Cargando...</div>
+          )}
+          <Link to="/" className='text-platzi-blue font-semibold'>Volver atras</Link>   
+        </div> 
+      : <div>
+          <p className='text-xl font-semibold'>No tienes ninguna orden pendiente</p>
+          <Link to="/" className='text-platzi-blue font-semibold'>Volver atras</Link>    
       </div>
-    </div>
+      }
+    </main>
   );
 };
 

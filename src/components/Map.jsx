@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 
 const Map = ({ data }) => {
-  const position = [data.latitude, data.longitude];
+  const position = [data.lat, data.lon];
 
   return (
     <MapContainer
