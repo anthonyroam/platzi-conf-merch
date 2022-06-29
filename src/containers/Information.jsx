@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { SecondaryButton } from '../components/SecondaryButton';
 import { Input } from '../components/Input';
+import { Helmet } from 'react-helmet';
 
 const Information = () => {
   const { state, addBuyer } = React.useContext(AppContext);
@@ -31,52 +32,58 @@ const Information = () => {
   };
 
   return (
-    <main className="flex flex-col gap-4 w-full mx-auto lg:w-3/5 lg:flex-row">
-      <section className="flex flex-col gap-4 w-full lg:w-4/5 ">
-        <div>
-          <h2 className="font-bold text-xl">Informacion de contacto:</h2>
-        </div>
-        <div>
-          <form ref={form} className="flex flex-col gap-2">
-            <Input type="text" name="name" id="" placeholder="Nombre" />
-            <Input type="text" name="email" id="" placeholder="Correo" />
-            <Input type="text" name="address" id="" placeholder="Dirección" />
-            <Input type="text" name="city" id="" placeholder="Ciudad" />
-            <Input type="text" name="state" id="" placeholder="Estado" />
-            <Input type="text" name="country" id="" placeholder="País" />
-            <Input type="text" name="zipCode" id="" placeholder="Código Postal" />
-            <Input type="text" name="phone" id="" placeholder="Teléfono" />
-          </form>
-        </div>
-        <div className="flex items-center justify-around">
-          <Link to="/checkout">
-            <SecondaryButton
+    <>
+      <Helmet>
+        <title></title>
+      </Helmet>
+      <main className="flex flex-col gap-4 w-full mx-auto lg:w-3/5 lg:flex-row">
+        <section className="flex flex-col gap-4 w-full lg:w-4/5 ">
+          <div>
+            <h2 className="font-bold text-xl">Informacion de contacto:</h2>
+          </div>
+          <div>
+            <form ref={form} className="flex flex-col gap-2">
+              <Input type="text" name="name" id="" placeholder="Nombre" />
+              <Input type="text" name="email" id="" placeholder="Correo" />
+              <Input type="text" name="address" id="" placeholder="Dirección" />
+              <Input type="text" name="city" id="" placeholder="Ciudad" />
+              <Input type="text" name="state" id="" placeholder="Estado" />
+              <Input type="text" name="country" id="" placeholder="País" />
+              <Input type="text" name="zipCode" id="" placeholder="Código Postal" />
+              <Input type="text" name="phone" id="" placeholder="Teléfono" />
+            </form>
+          </div>
+          <div className="flex items-center justify-around">
+            <Link to="/checkout">
+              <SecondaryButton
+                type="button"
+                content="Regresar"
+                handleClick={() => {}}
+              />
+            </Link>
+            <PrimaryButton
               type="button"
-              content="Regresar"
-              handleClick={() => {}}
+              content="Pagar"
+              handleClick={handleSubmit}
             />
-          </Link>
-          <PrimaryButton
-            type="button"
-            content="Pagar"
-            handleClick={handleSubmit}
-          />
-        </div>
-      </section>
-      <aside className="w-5/6 mx-auto lg:w-1/5">
-        <h3 className="font-bold text-xl">Pedido:</h3>
-        {cart.map((item, index) => {
-          return (
-            <div key={`information:${item.title}${index}`}>
-              <div className="flex items-center justify-between space-y-2">
-                <h4>{item.title}</h4>
-                <span className="font-semibold">$ {item.price}</span>
+          </div>
+        </section>
+        <aside className="w-5/6 mx-auto lg:w-1/5">
+          <h3 className="font-bold text-xl">Pedido:</h3>
+          {cart.map((item, index) => {
+            return (
+              <div key={`information:${item.title}${index}`}>
+                <div className="flex items-center justify-between space-y-2">
+                  <h4>{item.title}</h4>
+                  <span className="font-semibold">$ {item.price}</span>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </aside>
-    </main>
+            );
+          })}
+        </aside>
+      </main>
+    </>
+    
   );
 };
 
