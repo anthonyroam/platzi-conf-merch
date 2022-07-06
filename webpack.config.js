@@ -55,12 +55,12 @@ module.exports = {
       systemvars: true,
       defaults: false,
     }),
-    // new webpack.DefinePlugin({
-    //   "process.env": {
-    //     API_KEY: JSON.stringify(process.env.API_KEY),
-    //     PAYPAL_CLIENT_ID: JSON.stringify(process.env.PAYPAL_CLIENT_ID),
-    //   }
-    // })
+    new webpack.DefinePlugin({
+      "process.env": {
+        API_KEY: JSON.stringify(process.env.API_KEY),
+        PAYPAL_CLIENT_ID: JSON.stringify(process.env.PAYPAL_CLIENT_ID),
+      }
+    })
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
