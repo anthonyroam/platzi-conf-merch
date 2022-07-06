@@ -20,6 +20,9 @@ jobs:
   deploy:
     name: Deploy
     needs: build
+    env:
+      API_KEY: ${{ secrets.pk.7be24c0c25071dd1cef443938dee607a }}
+      PAYPAL_CLIENT_ID: ${{ secrets.pk.AeuMgN8KZ5QuBSvcOrcfWIsMPjeaSi5_srYgux1X09kvnHFJ4QzeSHq1b6TSxDtSbDxfKTS9oPdJIgho }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -33,7 +36,5 @@ jobs:
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
-          env:
-            FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-            API_KEY: ${{ secrets.API_KEY }}
-            PAYPAL_CLIENT_ID: ${{ secrets.PAYPAL_CLIENT_ID }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
