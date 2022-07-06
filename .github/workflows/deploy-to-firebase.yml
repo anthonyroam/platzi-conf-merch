@@ -12,6 +12,9 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+        env: 
+          API_KEY: ${{ secrets.pk.API_KEY }}
+          PAYPAL_CLIENT_ID: ${{ secrets.PAYPAL_CLIENT_ID }}
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
@@ -20,9 +23,6 @@ jobs:
   deploy:
     name: Deploy
     needs: build
-    env:
-      API_KEY: ${{ secrets.pk.7be24c0c25071dd1cef443938dee607a }}
-      PAYPAL_CLIENT_ID: ${{ secrets.pk.AeuMgN8KZ5QuBSvcOrcfWIsMPjeaSi5_srYgux1X09kvnHFJ4QzeSHq1b6TSxDtSbDxfKTS9oPdJIgho }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
