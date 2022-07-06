@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import sumTotal from '../utils/sumTotal';
 import { PayPalButtons } from '@paypal/react-paypal-js';
-import { SecondaryButton } from "../components/SecondaryButton";
+import { SecondaryButton } from '../components/SecondaryButton';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
@@ -27,7 +27,7 @@ const Payment = () => {
   return (
     <>
       <Helmet>
-        <title></title>
+        <title>Platzi conf merch - Payment</title>
       </Helmet>
       <main className="w-full mx-auto flex flex-col gap-4 items-center lg:w-3/5">
         <h3 className="font-bold text-lg">Resumen del pedido:</h3>

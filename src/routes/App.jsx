@@ -8,16 +8,16 @@ import { Payment } from '../containers/Payment';
 import { Success } from '../containers/Success';
 import { NotFound } from '../containers/NotFound';
 import { Layout } from '../components/Layout';
-import '../main.css';
 import { AppProvider } from '../context/AppContext';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { PAYPAL_CLIENT_ID } from '../enviromentVariables';
+import '../main.css';
 
 const App = () => {
   return (
     <PayPalScriptProvider
       options={{
-        'client-id':
-          'AeuMgN8KZ5QuBSvcOrcfWIsMPjeaSi5_srYgux1X09kvnHFJ4QzeSHq1b6TSxDtSbDxfKTS9oPdJIgho',
+        'client-id': `${PAYPAL_CLIENT_ID}`,
       }}
     >
       <AppProvider>

@@ -18,7 +18,7 @@ const Checkout = () => {
   return (
     <>
       <Helmet>
-        <title></title>
+        <title>Platzi conf merch - Checkout</title>
       </Helmet>
       <main className="flex flex-col gap-6 w-full mx-auto px-6 py-10 lg:w-3/5 lg:flex-row">
         <section className="w-full space-y-4 lg:w-3/5 ">
@@ -46,14 +46,14 @@ const Checkout = () => {
           <aside className="flex flex-col gap-4 font-semibold">
             <h3 className="text-lg">Precio total: $ {sumTotal(cart)}</h3>
             <Link to="/checkout/information">
-              <PrimaryButton 
+              <PrimaryButton
                 type="button"
                 content="Continuar pedido"
                 handleClick={null}
               />
             </Link>
             <Link to="/">
-              <SecondaryButton 
+              <SecondaryButton
                 type="button"
                 content="Regresar"
                 handleClick={null}

@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -47,6 +49,18 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
+    new Dotenv({
+      path: '.env',
+      safe: true,
+      systemvars: true,
+      defaults: false,
+    }),
+    // new webpack.DefinePlugin({
+    //   "process.env": {
+    //     API_KEY: JSON.stringify(process.env.API_KEY),
+    //     PAYPAL_CLIENT_ID: JSON.stringify(process.env.PAYPAL_CLIENT_ID),
+    //   }
+    // })
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),

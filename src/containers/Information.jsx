@@ -34,7 +34,7 @@ const Information = () => {
   return (
     <>
       <Helmet>
-        <title></title>
+        <title>Platzi conf merch - Information</title>
       </Helmet>
       <main className="flex flex-col gap-4 w-full mx-auto lg:w-3/5 lg:flex-row">
         <section className="flex flex-col gap-4 w-full lg:w-4/5 ">
@@ -49,7 +49,12 @@ const Information = () => {
               <Input type="text" name="city" id="" placeholder="Ciudad" />
               <Input type="text" name="state" id="" placeholder="Estado" />
               <Input type="text" name="country" id="" placeholder="País" />
-              <Input type="text" name="zipCode" id="" placeholder="Código Postal" />
+              <Input
+                type="text"
+                name="zipCode"
+                id=""
+                placeholder="Código Postal"
+              />
               <Input type="text" name="phone" id="" placeholder="Teléfono" />
             </form>
           </div>
@@ -83,7 +88,6 @@ const Information = () => {
         </aside>
       </main>
     </>
-    
   );
 };
 

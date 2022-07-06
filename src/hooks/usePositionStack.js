@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const usePositionStack = (buyer) => {
   const [map, setMap] = React.useState();
+  const { API_KEY } = process.env;
 
-  const API_KEY = `pk.7be24c0c25071dd1cef443938dee607a`
   const getData = async () => {
     const { address, city, country } = buyer;
     const response = await axios(
